@@ -8,7 +8,13 @@ useHead({
   title: "駅QUIZ",
   meta: [
     {
+      name: "title",
+      property: "og:title",
+      content: "駅QUIZ",
+    },
+    {
       name: "description",
+      property: "og:description",
       content: "日本鐵道知識大考驗！從經過路線猜車站名稱",
     },
   ],
