@@ -6,6 +6,12 @@ import Landing from "@/components/Landing";
 
 useHead({
   title: "駅QUIZ",
+  meta: [
+    {
+      name: "description",
+      content: "日本鐵道知識大考驗！從經過路線猜車站名稱",
+    },
+  ],
 });
 
 class NavController {
