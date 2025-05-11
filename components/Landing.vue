@@ -1,3 +1,6 @@
+<script setup>
+const navController = inject("navController");
+</script>
 <template>
   <div>
     <div class="text-lg font-bold text-emerald-600 my-3 text-center">
@@ -6,7 +9,7 @@
     <h2 class="text-xl font-bold mb-2">遊戲流程</h2>
     <div class="mb-3">
       <h3 class="text-lg font-semibold text-emerald-800">遊戲設定</h3>
-      <ol class="list-decimal ps-6">
+      <ol class="list-decimal ps-6 leading-7">
         <li>選擇一或多個地區（都道府縣）</li>
         <li>設定車站需至少幾條路線經過</li>
         <li>選擇題數</li>
@@ -20,7 +23,7 @@
     <div class="mb-4">
       <h3 class="text-lg font-semibold text-emerald-800">開始遊戲</h3>
       每題會顯示某車站的所有鐵道路線
-      <ol class="list-[lower-alpha] ps-6">
+      <ol class="list-[lower-alpha] ps-6 leading-7">
         <li>
           練習模式
           <ul class="list-disc ps-6">
@@ -38,6 +41,7 @@
     </div>
     <div class="text-center py-4">
       <button
+        @click="navController.showSelectPrefectures"
         class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-md"
       >
         準備好了！

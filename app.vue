@@ -2,6 +2,7 @@
 import SelectPrefectures from "@/components/SelectPrefectures";
 import Play from "@/components/Play";
 import Options from "@/components/Options";
+import Landing from "@/components/Landing";
 
 useHead({
   title: "駅QUIZ",
@@ -9,7 +10,7 @@ useHead({
 
 class NavController {
   constructor() {
-    this.currentPage = shallowRef(SelectPrefectures);
+    this.currentPage = shallowRef(Landing);
   }
 
   showSelectPrefectures() {
