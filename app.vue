@@ -5,19 +5,20 @@ import Options from "@/components/Options";
 import Landing from "@/components/Landing";
 
 useHead({
+  link: {
+    rel: "icon",
+    type: "image/png",
+    href: "./favicon.png",
+  },
+});
+
+useSeoMeta({
   title: "駅QUIZ",
-  meta: [
-    {
-      name: "title",
-      property: "og:title",
-      content: "駅QUIZ",
-    },
-    {
-      name: "description",
-      property: "og:description",
-      content: "日本鐵道知識大考驗！從經過路線猜車站名稱",
-    },
-  ],
+  ogTitle: "駅QUIZ",
+  description: "日本鐵道知識大考驗！從經過路線猜車站名稱",
+  ogDescription: "日本鐵道知識大考驗！從經過路線猜車站名稱",
+  ogImage: "https://arbuztw.github.io/ekiquiz/favicon.png",
+  ogUrl: "https://arbuztw.github.io/ekiquiz/",
 });
 
 class NavController {
