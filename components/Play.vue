@@ -87,8 +87,13 @@ function createQuestions(
         type="text"
         placeholder="車站名稱"
         v-model="guessStation"
+        class="p-1 accent-emerald-500"
       />
-      <div v-else :class="[answerCorrect ? 'text-green-500' : 'text-red-500']">
+      <div
+        v-else
+        class="py-1"
+        :class="[answerCorrect ? 'text-green-500' : 'text-red-500']"
+      >
         <span>{{ answerCorrect ? "\u2713" : "\u2718" }}</span
         >&nbsp;{{ guessStation }}
       </div>
