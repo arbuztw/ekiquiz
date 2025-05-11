@@ -3,6 +3,10 @@ import SelectPrefectures from "@/components/SelectPrefectures";
 import Play from "@/components/Play";
 import Options from "@/components/Options";
 
+useHead({
+  title: "駅QUIZ",
+});
+
 const currentPage = shallowRef(SelectPrefectures);
 
 const showPage = (page) => {
