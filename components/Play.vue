@@ -60,57 +60,61 @@ function createQuestions(
 </script>
 
 <template>
-  <div
-    v-if="qid < questions.length"
-    class="flex-col text-center h-screen overflow-auto p-6"
-  >
-    <div class="min-h-[20em] flex flex-col justify-center items-center">
-      <div class="flex" v-for="line in questions[qid].question" :key="line">
+  <div v-if="qid < questions.length" class="flex-col text-center">
+    <div
+      class="min-h-[22rem] min-w-[22rem] flex flex-col justify-center items-center mb-6 p-4 bg-white rounded-lg shadow-sm"
+    >
+      <div
+        class="flex text-slate-800"
+        v-for="line in questions[qid].question"
+        :key="line"
+      >
         {{ line }}
       </div>
     </div>
-    <div class="my-2">
+    <div class="my-4">
       <button
         v-if="!showAnswer"
         @click="showAnswer = true"
-        class="bg-blue-500 text-white px-3 py-3 mx-4 rounded-md"
+        class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 mx-4 rounded-md"
       >
         看答案
       </button>
       <div v-else>
         <button
           @click="nextQuestion(true)"
-          class="bg-green-500 text-white px-3 py-3 mx-4 rounded-md"
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-3 mx-4 rounded-md"
         >
           答對
         </button>
         <button
           @click="nextQuestion(false)"
-          class="bg-red-500 text-white px-3 py-3 mx-4 rounded-md"
+          class="bg-red-500 hover:bg-red-600 text-white px-4 py-3 mx-4 rounded-md"
         >
           答錯
         </button>
       </div>
     </div>
-    <div class="font-bold py-2" v-show="showAnswer">
+    <div class="text-lg font-bold py-2" v-show="showAnswer">
       {{ questions[qid].answer }}
     </div>
   </div>
   <div v-else class="flex flex-col h-full justify-center">
     <div class="min-h-[50%] text-center">
-      <div class="text-lg">恭喜回答完所有問題</div>
+      <div class="text-emerald-800 font-semibold text-xl">挑戰成功</div>
       <div class="py-6">
-        <div class="text-xl">分數</div>
-        <div class="text-xl font-bold">
-          {{ numCorrect }} / {{ questions.length }}
+        <div class="text-lg text-slate-600">分數</div>
+        <div class="text-emerald-600 text-2xl font-bold">
+          {{ String(numCorrect).padStart(2, "&nbsp;") }} /
+          {{ String(questions.length).padStart(2, "&nbsp;") }}
         </div>
       </div>
-      <div class="text-center">
+      <div class="text-center my-4">
         <button
           @click="showPage('SelectPrefectures')"
-          class="bg-blue-500 text-white px-3 py-3 rounded-md"
+          class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-md"
         >
-          重來
+          再玩一次
         </button>
       </div>
     </div>

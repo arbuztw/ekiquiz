@@ -22,15 +22,18 @@ const showPage = (page) => {
 };
 </script>
 <template>
-  <div class="flex flex-col h-full p-6 items-center">
+  <div class="flex flex-col p-6 items-center h-full">
     <component :is="currentPage" :showPage="showPage" />
   </div>
 </template>
 
-<style>
+<style lang="postcss">
 html,
 body,
 #__nuxt {
   height: 100%;
+}
+html {
+  @apply bg-slate-50 text-slate-700;
 }
 </style>

@@ -54,23 +54,25 @@ const startPlay = () => {
 </script>
 <template>
   <div>
-    <h1 class="text-xl font-bold text-center text-violet-600">選擇地區</h1>
+    <h1 class="text-xl font-bold text-center text-emerald-800">選擇地區</h1>
     <div class="mb-2">
       <label class="text-xl font-semibold space-x-1">
         <input
           type="checkbox"
           :checked="isAllSelected"
           @change="toggleAll"
+          class="scale-110 accent-emerald-500"
         /><span>全国</span>
       </label>
     </div>
     <div v-for="(prefs, region) in prefectures" :key="region" class="mb-4">
-      <div class="flex justify-between items-center mb-2">
+      <div class="flex justify-between items-center mb-1">
         <label class="text-xl font-semibold space-x-1">
           <input
             type="checkbox"
             :checked="isRegionFullySelected(region)"
             @change="toggleRegion(region)"
+            class="scale-110 border-slate-300 focus:border-emerald-500 focus:ring-emerald-500 accent-emerald-500"
           /><span>{{ region }}</span>
         </label>
       </div>
@@ -81,7 +83,7 @@ const startPlay = () => {
             type="checkbox"
             :value="pref.code"
             v-model="config.selectedPrefectures"
-            class="accent-blue-500"
+            class="scale-110 accent-emerald-500"
           />
           <span>{{ pref.name }}</span>
         </label>
@@ -92,8 +94,10 @@ const startPlay = () => {
     <button
       @click="startPlay"
       :disabled="!validSelection"
-      class="text-white px-3 py-3 rounded-md"
-      :class="[validSelection ? 'bg-blue-500' : 'bg-gray-300']"
+      class="text-white px-4 py-3 rounded-md"
+      :class="[
+        validSelection ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-gray-300',
+      ]"
     >
       確定
     </button>
