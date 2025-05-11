@@ -6,5 +6,6 @@ export const useConfigStores = defineStore("config", {
     selectedPrefectures: [] as object[],
     stationLineThreshold: 4 as number,
     numQuestions: 10 as number,
+    isAnswerMode: false as boolean,
   }),
 });

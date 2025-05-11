@@ -18,12 +18,23 @@ const questions = createQuestions(
 const qid = ref(0);
 const showAnswer = ref(false);
 const numCorrect = ref(0);
+const guessStation = ref("");
+const answered = ref(false);
+const answerCorrect = ref(false);
+
+const checkAnswer = () => {
+  answerCorrect.value = guessStation.value == questions[qid.value].answer;
+  answered.value = true;
+};
 
 const nextQuestion = (correct) => {
   if (correct) {
     numCorrect.value += 1;
   }
   showAnswer.value = false;
+  guessStation.value = "";
+  answered.value = false;
+  answerCorrect.value = false;
   qid.value += 1;
 };
 
@@ -70,7 +81,38 @@ function createQuestions(
         {{ line }}
       </div>
     </div>
-    <div class="my-4">
+    <div v-if="config.isAnswerMode" class="my-4">
+      <input
+        v-if="!answered"
+        type="text"
+        placeholder="車站名稱"
+        v-model="guessStation"
+      />
+      <div v-else :class="[answerCorrect ? 'text-green-500' : 'text-red-500']">
+        <span>{{ answerCorrect ? "\u2713" : "\u2718" }}</span
+        >&nbsp;{{ guessStation }}
+      </div>
+      <div class="my-4">
+        <button
+          v-if="!answered"
+          @click="checkAnswer"
+          class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 mx-4 rounded-md"
+        >
+          送出
+        </button>
+        <button
+          v-else
+          @click="nextQuestion(answerCorrect)"
+          class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-md"
+        >
+          下一題
+        </button>
+      </div>
+      <div v-if="answered && !answerCorrect" class="text-lg font-bold py-2">
+        正確答案：&nbsp;{{ questions[qid].answer }}
+      </div>
+    </div>
+    <div v-else class="my-4">
       <button
         v-if="!showAnswer"
         @click="showAnswer = true"
