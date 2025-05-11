@@ -55,14 +55,3 @@ provide("navController", navController);
     </div>
   </div>
 </template>
-
-<style lang="postcss">
-html,
-body,
-#__nuxt {
-  height: 100%;
-}
-html {
-  @apply bg-slate-50 text-slate-700;
-}
-</style>
