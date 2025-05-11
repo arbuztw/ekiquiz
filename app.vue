@@ -26,13 +26,15 @@ const showPage = (page) => {
 };
 </script>
 <template>
-  <div
-    class="flex justify-between items-center px-4 py-3 bg-emerald-600 text-white"
-  >
-    <h1 class="text-xl font-bold">駅QUIZ</h1>
-  </div>
-  <div class="flex flex-col p-6 items-center h-full">
-    <component :is="currentPage" :showPage="showPage" />
+  <div class="flex flex-col h-full">
+    <div
+      class="flex justify-between items-center px-4 py-3 bg-emerald-600 text-white"
+    >
+      <h1 class="text-xl font-bold">駅QUIZ</h1>
+    </div>
+    <div class="flex flex-col p-6 items-center flex-1">
+      <component :is="currentPage" :showPage="showPage" />
+    </div>
   </div>
 </template>
 
