@@ -37,7 +37,7 @@ provide("navController", navController);
     >
       <h1 class="text-xl font-bold"><a href="./">駅QUIZ</a></h1>
     </div>
-    <div class="flex flex-col px-6 items-center flex-1">
+    <div class="flex flex-col px-6 pb-14 items-center flex-1">
       <component :is="navController.currentPage.value" />
     </div>
   </div>
