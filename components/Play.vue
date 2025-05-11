@@ -4,9 +4,7 @@ import lines from "@/data/lines.json";
 import stations from "@/data/stations.json";
 import { shuffleArray } from "@/utils/shuffle";
 
-const { showPage } = defineProps({
-  showPage: Function,
-});
+const navController = inject("navController");
 
 const config = useConfigStores();
 
@@ -111,7 +109,7 @@ function createQuestions(
       </div>
       <div class="text-center my-4">
         <button
-          @click="showPage('SelectPrefectures')"
+          @click="navController.showSelectPrefectures"
           class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-md"
         >
           再玩一次

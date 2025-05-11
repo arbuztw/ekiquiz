@@ -3,9 +3,7 @@ import { ref, computed } from "vue";
 import { prefectures } from "@/data/prefectures";
 import { useConfigStores } from "@/stores/configStores";
 
-const { showPage } = defineProps({
-  showPage: Function,
-});
+const navController = inject("navController");
 
 const config = useConfigStores();
 
@@ -47,9 +45,9 @@ const toggleAll = () => {
 const numLines = ref(1);
 const validSelection = computed(() => config.selectedPrefectures.length > 0);
 
-const startPlay = () => {
+const showOptions = () => {
   window.scrollTo({ top: 0, left: 0 });
-  showPage("Options");
+  navController.showOptions();
 };
 </script>
 <template>
@@ -94,7 +92,7 @@ const startPlay = () => {
   </div>
   <div class="text-center p-2">
     <button
-      @click="startPlay"
+      @click="showOptions"
       :disabled="!validSelection"
       class="text-white px-4 py-3 rounded-md"
       :class="[

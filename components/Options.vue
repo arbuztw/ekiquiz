@@ -2,9 +2,7 @@
 import { useConfigStores } from "@/stores/configStores";
 import stations from "@/data/stations.json";
 
-const { showPage } = defineProps({
-  showPage: Function,
-});
+const navController = inject("navController");
 
 const config = useConfigStores();
 
@@ -45,7 +43,7 @@ config.stationLineThreshold = Math.min(
   </div>
   <div class="text-center p-2">
     <button
-      @click="showPage('Play')"
+      @click="navController.startPlay"
       class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-md"
     >
       開始

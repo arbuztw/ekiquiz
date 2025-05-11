@@ -7,23 +7,27 @@ useHead({
   title: "駅QUIZ",
 });
 
-const currentPage = shallowRef(SelectPrefectures);
-
-const showPage = (page) => {
-  switch (page) {
-    case "SelectPrefectures":
-      currentPage.value = SelectPrefectures;
-      break;
-    case "Play":
-      currentPage.value = Play;
-      break;
-    case "Options":
-      currentPage.value = Options;
-      break;
-    default:
-      currentPage.value = SelectPrefectures;
+class NavController {
+  constructor() {
+    this.currentPage = shallowRef(SelectPrefectures);
   }
-};
+
+  showSelectPrefectures() {
+    this.currentPage.value = SelectPrefectures;
+  }
+
+  showOptions() {
+    this.currentPage.value = Options;
+  }
+
+  startPlay() {
+    this.currentPage.value = Play;
+  }
+}
+
+const navController = new NavController();
+
+provide("navController", navController);
 </script>
 <template>
   <div class="flex flex-col h-full">
@@ -33,7 +37,7 @@ const showPage = (page) => {
       <h1 class="text-xl font-bold"><a href="./">駅QUIZ</a></h1>
     </div>
     <div class="flex flex-col px-6 items-center flex-1">
-      <component :is="currentPage" :showPage="showPage" />
+      <component :is="navController.currentPage.value" />
     </div>
   </div>
 </template>
