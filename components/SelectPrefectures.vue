@@ -54,7 +54,9 @@ const startPlay = () => {
 </script>
 <template>
   <div>
-    <h1 class="text-xl font-bold text-center text-emerald-800">選擇地區</h1>
+    <h1 class="text-xl font-bold text-center text-emerald-800 my-3">
+      選擇地區
+    </h1>
     <div class="mb-2">
       <label class="text-xl font-semibold space-x-1">
         <input
@@ -90,7 +92,7 @@ const startPlay = () => {
       </div>
     </div>
   </div>
-  <div class="text-center pb-20">
+  <div class="text-center p-2">
     <button
       @click="startPlay"
       :disabled="!validSelection"

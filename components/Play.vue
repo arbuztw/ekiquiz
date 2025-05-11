@@ -60,7 +60,7 @@ function createQuestions(
 </script>
 
 <template>
-  <div v-if="qid < questions.length" class="flex-col text-center">
+  <div v-if="qid < questions.length" class="flex-col text-center pt-6">
     <div
       class="min-h-[22rem] min-w-[22rem] flex flex-col justify-center items-center mb-6 p-4 bg-white rounded-lg shadow-sm"
     >
@@ -102,9 +102,9 @@ function createQuestions(
   <div v-else class="flex flex-col h-full justify-center">
     <div class="min-h-[50%] text-center">
       <div class="text-emerald-800 font-semibold text-xl">挑戰成功</div>
-      <div class="py-6">
+      <div class="py-8">
         <div class="text-lg text-slate-600">分數</div>
-        <div class="text-emerald-600 text-2xl font-bold">
+        <div class="text-emerald-600 text-3xl font-bold">
           {{ String(numCorrect).padStart(2, "&nbsp;") }} /
           {{ String(questions.length).padStart(2, "&nbsp;") }}
         </div>

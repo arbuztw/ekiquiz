@@ -32,7 +32,7 @@ const showPage = (page) => {
     >
       <h1 class="text-xl font-bold">駅QUIZ</h1>
     </div>
-    <div class="flex flex-col p-6 items-center flex-1">
+    <div class="flex flex-col px-6 items-center flex-1">
       <component :is="currentPage" :showPage="showPage" />
     </div>
   </div>
