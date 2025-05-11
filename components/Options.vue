@@ -19,11 +19,9 @@ config.stationLineThreshold = Math.min(
 );
 </script>
 <template>
-  <h1 class="text-xl font-bold text-emerald-800 text-center my-3">遊戲設定</h1>
-  <div class="grid grid-cols-[max-content_1fr] gap-4 w-max mb-6">
-    <label class="font-semibold text-slate-800 content-center"
-      >車站路線數:</label
-    >
+  <h1 class="text-xl font-bold text-emerald-800 text-center mt-3">遊戲設定</h1>
+  <div class="grid grid-cols-[max-content_1fr] gap-4 w-max my-6">
+    <label class="option-name">車站路線數：</label>
     <div>
       至少&nbsp;<select v-model="config.stationLineThreshold" class="p-1">
         <option v-for="numLine in maxNumLines" :value="numLine">
@@ -32,13 +30,34 @@ config.stationLineThreshold = Math.min(
       >&nbsp;條路線經過
     </div>
 
-    <label class="font-semibold text-slate-800 content-center">問題數:</label>
+    <label class="option-name">問題數：</label>
     <div>
       <select v-model="config.numQuestions" class="p-1">
         <option value="10">10</option>
         <option value="20">20</option>
         <option value="25">25</option>
       </select>
+    </div>
+    <label class="option-name">模式：</label>
+    <div>
+      <label class="pe-2">
+        <input
+          type="radio"
+          :value="false"
+          v-model="config.isAnswerMode"
+          class="accent-emerald-500"
+        />
+        練習模式
+      </label>
+      <label>
+        <input
+          type="radio"
+          :value="true"
+          v-model="config.isAnswerMode"
+          class="accent-emerald-500"
+        />
+        挑戰模式
+      </label>
     </div>
   </div>
   <div class="text-center p-2">
@@ -50,3 +69,9 @@ config.stationLineThreshold = Math.min(
     </button>
   </div>
 </template>
+
+<style scoped lang="postcss">
+label.option-name {
+  @apply font-semibold text-slate-800 content-center;
+}
+</style>
