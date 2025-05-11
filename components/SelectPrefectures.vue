@@ -9,30 +9,17 @@ const { showPage } = defineProps({
 
 const config = useConfigStores();
 
-var regions = {
-  北海道: [],
-  東北: [],
-  関東: [],
-  中部: [],
-  近畿: [],
-  中国: [],
-  四国: [],
-  "九州・沖縄": [],
-};
-
-prefectures.forEach((pref) => regions[pref.region].push(pref));
-
-const allPrefectures = Object.values(regions)
+const allPrefectures = Object.values(prefectures)
   .flat()
   .map((pref) => pref.code);
 
 const isRegionFullySelected = (region) =>
-  regions[region].every((pref) =>
+  prefectures[region].every((pref) =>
     config.selectedPrefectures.includes(pref.code)
   );
 
 const toggleRegion = (region) => {
-  const prefs = regions[region].map((pref) => pref.code);
+  const prefs = prefectures[region].map((pref) => pref.code);
   if (isRegionFullySelected(region)) {
     config.selectedPrefectures = config.selectedPrefectures.filter(
       (pref) => !prefs.includes(pref)
@@ -77,7 +64,7 @@ const startPlay = () => {
         /><span>全国</span>
       </label>
     </div>
-    <div v-for="(prefs, region) in regions" :key="region" class="mb-4">
+    <div v-for="(prefs, region) in prefectures" :key="region" class="mb-4">
       <div class="flex justify-between items-center mb-2">
         <label class="text-xl font-semibold space-x-1">
           <input
