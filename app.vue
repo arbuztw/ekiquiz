@@ -4,6 +4,8 @@ import Play from "@/components/Play";
 import Options from "@/components/Options";
 import Landing from "@/components/Landing";
 
+const config = useRuntimeConfig();
+
 useHead({
   link: {
     rel: "icon",
@@ -20,14 +22,16 @@ useHead({
   ],
 });
 
-useSeoMeta({
-  title: "駅QUIZ",
-  ogTitle: "駅QUIZ",
-  description: "日本鐵道知識大考驗！從經過路線猜車站名稱",
-  ogDescription: "日本鐵道知識大考驗！從經過路線猜車站名稱",
-  ogImage: "https://arbuztw.github.io/ekiquiz/favicon.png",
-  ogUrl: "https://arbuztw.github.io/ekiquiz/",
-});
+if (config.app.cdnURL != "") {
+  useSeoMeta({
+    title: "駅QUIZ",
+    ogTitle: "駅QUIZ",
+    description: "日本鐵道知識大考驗！從經過路線猜車站名稱",
+    ogDescription: "日本鐵道知識大考驗！從經過路線猜車站名稱",
+    ogImage: new URL("favicon.png", config.app.cdnURL).toString(),
+    ogUrl: new URL(config.app.baseURL, config.app.cdnURL).toString(),
+  });
+}
 
 class NavController {
   constructor() {
@@ -35,7 +39,7 @@ class NavController {
   }
 
   showSelectPrefectures() {
-    this.currentPage.value = SelectPrefectures;
+    this.currentPage.useRuntimeConfig().public.cdnUrlvalue = SelectPrefectures;
   }
 
   showOptions() {
