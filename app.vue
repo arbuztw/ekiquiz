@@ -13,12 +13,14 @@ useHead({
     href: "./favicon.png",
   },
   script: [
-    {
-      defer: true,
-      src: "https://static.cloudflareinsights.com/beacon.min.js",
-      "data-cf-beacon": '{"token": "5e2082703e974ba59581cb3fa70b5b23"}',
-      body: true,
-    },
+    config.public.disableAnalytics
+      ? {}
+      : {
+          defer: true,
+          src: "https://static.cloudflareinsights.com/beacon.min.js",
+          "data-cf-beacon": '{"token": "5e2082703e974ba59581cb3fa70b5b23"}',
+          body: true,
+        },
   ],
 });
 
