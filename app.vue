@@ -39,7 +39,7 @@ class NavController {
   }
 
   showSelectPrefectures() {
-    this.currentPage.useRuntimeConfig().public.cdnUrlvalue = SelectPrefectures;
+    this.currentPage.value = SelectPrefectures;
   }
 
   showOptions() {
