@@ -29,7 +29,7 @@ if (config.app.cdnURL != "") {
     description: "日本鐵道知識大考驗！從經過路線猜車站名稱",
     ogDescription: "日本鐵道知識大考驗！從經過路線猜車站名稱",
     ogImage: new URL("favicon.png", config.app.cdnURL).toString(),
-    ogUrl: new URL(config.app.baseURL, config.app.cdnURL).toString(),
+    ogUrl: config.app.cdnURL,
   });
 }
 

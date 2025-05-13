@@ -16,7 +16,7 @@ jobs:
           node-version: "20"
       # Pick your own package manager and build script
       - run: npm install
-      - run: NUXT_APP_CDN_URL=https://arbuztw.github.io NUXT_APP_BASE_URL=/ekiquiz/ npx nuxt build --preset github_pages
+      - run: NUXT_APP_CDN_URL=https://arbuztw.github.io/ekiquiz/ npx nuxt build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
