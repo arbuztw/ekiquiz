@@ -23,7 +23,9 @@ const answered = ref(false);
 const answerCorrect = ref(false);
 
 const checkAnswer = () => {
-  answerCorrect.value = guessStation.value == questions[qid.value].answer;
+  answerCorrect.value = questions[qid.value].answer.includes(
+    guessStation.value
+  );
   answered.value = true;
 };
 
@@ -59,7 +61,7 @@ function createQuestions(
     .map(([line_str, stations]) => {
       return {
         question: line_str.split(",").map((line) => lines[line].name),
-        answer: stations[0].name,
+        answer: stations[0].names,
       };
     })
     .toArray();
@@ -114,7 +116,7 @@ function createQuestions(
         </button>
       </div>
       <div v-if="answered && !answerCorrect" class="text-lg font-bold py-2">
-        正確答案：&nbsp;{{ questions[qid].answer }}
+        正確答案：&nbsp;{{ questions[qid].answer.join(" / ") }}
       </div>
     </div>
     <div v-else class="my-4">
@@ -141,7 +143,7 @@ function createQuestions(
       </div>
     </div>
     <div class="text-lg font-bold py-2" v-show="showAnswer">
-      {{ questions[qid].answer }}
+      {{ questions[qid].answer.join(" / ") }}
     </div>
   </div>
   <div v-else class="flex flex-col h-full justify-center">
