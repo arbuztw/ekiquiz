@@ -1,1 +1,71 @@
-{}
+{
+    "title": "駅QUIZ",
+    "metadata": {
+        "description": "日本鐵道知識大考驗！\n從經過路線猜車站名稱"
+    },
+    "slogan": "日本鐵道知識大考驗！\n從經過路線猜車站名稱",
+    "flow": {
+        "title": "遊戲流程",
+        "optionFlow": {
+            "title": "遊戲設定",
+            "selectRegions": "選擇一或多個地區（都道府縣）",
+            "minLines": "設定車站需至少幾條路線經過",
+            "selectQuestions": "選擇題數",
+            "chooseMode": "選擇{practiceMode}或{challengeMode}",
+        },
+        "gameFlow": {
+            "title": "開始遊戲",
+            "description": "每題會顯示通過某車站的所有鐵道路線（不含新幹線）",
+            "practice": {
+                "showAnswer": "點擊「{showAnswer}」顯示解答",
+                "markAnswer": "自行選擇「{correctAnswer}」或「{wrongAnswer}」"
+            },
+            "challenge": {
+                "inputExact": "輸入車站名稱（需完全一致）"
+            }
+        },
+        "buttons": {
+            "ready": "準備好了！"
+        }
+    },
+    "selectPrefectures": {
+        "title": "選擇地區",
+        "buttons": {
+            "confirm": "確定"
+        }
+    },
+    "options": {
+        "title": "遊戲設定",
+        "numLines": {
+            "title": "車站路線數",
+            "content": "至少{numLines}條路線經過"
+        },
+        "numQuestions": {
+            "title": "問題數"
+        },
+        "mode": "模式",
+        "practiceMode": "練習模式",
+        "challengeMode": "挑戰模式",
+        "buttons": {
+            "start": "開始"
+        }
+    },
+    "play": {
+        "stationName": "車站名稱",
+        "correctAnswer": "正確答案",
+        "buttons": {
+            "submit": "送出",
+            "next": "下一題",
+            "showAnswer": "看答案",
+            "correctAnswer": "答對",
+            "wrongAnswer": "答錯"
+        }
+    },
+    "result": {
+        "title": "遊戲結束",
+        "score": "分數",
+        "buttons": {
+            "replay": "再玩一次"
+        }
+    }
+}

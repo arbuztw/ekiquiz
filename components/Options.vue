@@ -19,18 +19,21 @@ config.stationLineThreshold = Math.min(
 );
 </script>
 <template>
-  <h1 class="text-xl font-bold text-emerald-800 text-center mt-3">遊戲設定</h1>
+  <h1 class="text-xl font-bold text-emerald-800 text-center mt-3">
+    {{ $t("options.title") }}
+  </h1>
   <div class="grid grid-cols-[max-content_1fr] gap-4 w-max my-6">
-    <label class="option-name">車站路線數：</label>
-    <div>
-      至少&nbsp;<select v-model="config.stationLineThreshold" class="p-1">
-        <option v-for="numLine in maxNumLines" :value="numLine">
-          {{ numLine }}
-        </option></select
-      >&nbsp;條路線經過
-    </div>
-
-    <label class="option-name">問題數：</label>
+    <label class="option-name">{{ $t("options.numLines.title") }}:</label>
+    <i18n-t keypath="options.numLines.content" tag="div">
+      <template v-slot:numLines>
+        &nbsp;<select v-model="config.stationLineThreshold" class="p-1">
+          <option v-for="numLines in maxNumLines" :value="numLines">
+            {{ numLines }}
+          </option></select
+        >&nbsp;
+      </template>
+    </i18n-t>
+    <label class="option-name">{{ $t("options.numQuestions.title") }}：</label>
     <div>
       <select v-model="config.numQuestions" class="p-1">
         <option value="10">10</option>
@@ -38,7 +41,7 @@ config.stationLineThreshold = Math.min(
         <option value="25">25</option>
       </select>
     </div>
-    <label class="option-name">模式：</label>
+    <label class="option-name">{{ $t("options.mode") }}：</label>
     <div>
       <label class="pe-2">
         <input
@@ -47,7 +50,7 @@ config.stationLineThreshold = Math.min(
           v-model="config.isAnswerMode"
           class="accent-emerald-500"
         />
-        練習模式
+        {{ $t("options.practiceMode") }}
       </label>
       <label>
         <input
@@ -56,7 +59,7 @@ config.stationLineThreshold = Math.min(
           v-model="config.isAnswerMode"
           class="accent-emerald-500"
         />
-        挑戰模式
+        {{ $t("options.challengeMode") }}
       </label>
     </div>
   </div>
@@ -65,7 +68,7 @@ config.stationLineThreshold = Math.min(
       @click="navController.startPlay"
       class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-md"
     >
-      開始
+      {{ $t("options.buttons.start") }}
     </button>
   </div>
 </template>

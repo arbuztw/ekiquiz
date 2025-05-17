@@ -4,6 +4,8 @@ import Play from "@/components/Play";
 import Options from "@/components/Options";
 import Landing from "@/components/Landing";
 
+const { t } = useI18n();
+
 const config = useRuntimeConfig();
 
 useHead({
@@ -26,10 +28,10 @@ useHead({
 
 if (config.app.cdnURL != "") {
   useSeoMeta({
-    title: "駅QUIZ",
-    ogTitle: "駅QUIZ",
-    description: "日本鐵道知識大考驗！從經過路線猜車站名稱",
-    ogDescription: "日本鐵道知識大考驗！從經過路線猜車站名稱",
+    title: t("title"),
+    ogTitle: t("title"),
+    description: t("metadata.description"),
+    ogDescription: t("metadata.description"),
     ogImage: new URL("favicon.png", config.app.cdnURL).toString(),
     ogUrl: config.app.cdnURL,
   });
@@ -62,7 +64,9 @@ provide("navController", navController);
     <div
       class="flex justify-between items-center px-4 py-3 bg-emerald-600 text-white"
     >
-      <h1 class="text-xl font-bold"><a href="./">駅QUIZ</a></h1>
+      <h1 class="text-xl font-bold">
+        <a href="./">{{ $t("title") }}</a>
+      </h1>
     </div>
     <div class="flex flex-col px-6 pb-14 items-center flex-1">
       <component :is="navController.currentPage.value" />

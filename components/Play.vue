@@ -87,7 +87,7 @@ function createQuestions(
       <input
         v-if="!answered"
         type="text"
-        placeholder="車站名稱"
+        :placeholder="$t('play.stationName')"
         v-model="guessStation"
         class="p-1 accent-emerald-500"
       />
@@ -105,18 +105,20 @@ function createQuestions(
           @click="checkAnswer"
           class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 mx-4 rounded-md"
         >
-          送出
+          {{ $t("play.buttons.submit") }}
         </button>
         <button
           v-else
           @click="nextQuestion(answerCorrect)"
           class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-md"
         >
-          下一題
+          {{ $t("play.buttons.next") }}
         </button>
       </div>
       <div v-if="answered && !answerCorrect" class="text-lg font-bold py-2">
-        正確答案：&nbsp;{{ questions[qid].answer.join(" / ") }}
+        {{ $t("play.correctAnswer") }}：&nbsp;{{
+          questions[qid].answer.join(" / ")
+        }}
       </div>
     </div>
     <div v-else class="my-4">
@@ -125,20 +127,20 @@ function createQuestions(
         @click="showAnswer = true"
         class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-3 mx-4 rounded-md"
       >
-        看答案
+        {{ $t("play.buttons.showAnswer") }}
       </button>
       <div v-else>
         <button
           @click="nextQuestion(true)"
           class="bg-green-500 hover:bg-green-600 text-white px-4 py-3 mx-4 rounded-md"
         >
-          答對
+          {{ $t("play.buttons.correctAnswer") }}
         </button>
         <button
           @click="nextQuestion(false)"
           class="bg-red-500 hover:bg-red-600 text-white px-4 py-3 mx-4 rounded-md"
         >
-          答錯
+          {{ $t("play.buttons.wrongAnswer") }}
         </button>
       </div>
     </div>
@@ -148,9 +150,11 @@ function createQuestions(
   </div>
   <div v-else class="flex flex-col h-full justify-center">
     <div class="min-h-[50%] text-center">
-      <div class="text-emerald-800 font-semibold text-xl">挑戰成功</div>
+      <div class="text-emerald-800 font-semibold text-xl">
+        {{ $t("result.title") }}
+      </div>
       <div class="py-8">
-        <div class="text-lg text-slate-600">分數</div>
+        <div class="text-lg text-slate-600">{{ $t("result.score") }}</div>
         <div class="text-emerald-600 text-3xl font-bold">
           {{ String(numCorrect).padStart(2, "&nbsp;") }} /
           {{ String(questions.length).padStart(2, "&nbsp;") }}
@@ -161,7 +165,7 @@ function createQuestions(
           @click="navController.showSelectPrefectures"
           class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-md"
         >
-          再玩一次
+          {{ $t("result.buttons.replay") }}
         </button>
       </div>
     </div>

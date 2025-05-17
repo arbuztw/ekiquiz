@@ -53,7 +53,7 @@ const showOptions = () => {
 <template>
   <div>
     <h1 class="text-xl font-bold text-center text-emerald-800 my-3">
-      選擇地區
+      {{ $t("selectPrefectures.title") }}
     </h1>
     <div class="mb-2">
       <label class="text-xl font-semibold space-x-1">
@@ -99,7 +99,7 @@ const showOptions = () => {
         validSelection ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-gray-300',
       ]"
     >
-      確定
+      {{ $t("selectPrefectures.buttons.confirm") }}
     </button>
   </div>
 </template>

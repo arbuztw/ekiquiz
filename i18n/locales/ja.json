@@ -1,1 +1,71 @@
-{}
+{
+    "title": "駅クイズ",
+    "metadata": {
+        "description": "乗り入れ路線から駅名を当てよう！",
+    },
+    "slogan": "乗り入れ路線から駅名を当てよう！",
+    "flow": {
+        "title": "ゲームの流れ",
+        "optionFlow": {
+            "title": "ゲーム設定",
+            "selectRegions": "地域（都道府県）を選ぶ",
+            "minLines": "駅の乗り入れ路線数を設定",
+            "selectQuestions": "出題数を選ぶ",
+            "chooseMode": "{practiceMode}か{challengeMode}を選ぶ"
+        },
+        "gameFlow": {
+            "title": "ゲーム開始",
+            "description": "駅に乗り入れるすべての路線（新幹線を除く）が表示されます",
+            "practice": {
+                "showAnswer": "「{showAnswer}」で答えを表示",
+                "markAnswer": "「{correctAnswer}」か「{wrongAnswer}」を選ぶ"
+            },
+            "challenge": {
+                "inputExact": "駅名を入力（完全一致）"
+            }
+        },
+        "buttons": {
+            "ready": "準備完了！"
+        }
+    },
+    "selectPrefectures": {
+        "title": "地域を選ぶ",
+        "buttons": {
+            "confirm": "確定"
+        }
+    },
+    "options": {
+        "title": "ゲーム設定",
+        "numLines": {
+            "title": "乗り入れ路線数",
+            "content": "最低{numLines}路線"
+        },
+        "numQuestions": {
+            "title": "出題数"
+        },
+        "mode": "モード",
+        "practiceMode": "練習モード",
+        "challengeMode": "挑戦モード",
+        "buttons": {
+            "start": "開始"
+        }
+    },
+    "play": {
+        "stationName": "駅名",
+        "correctAnswer": "正解",
+        "buttons": {
+            "submit": "送信",
+            "next": "次へ",
+            "showAnswer": "答えを見る",
+            "correctAnswer": "正解",
+            "wrongAnswer": "不正解"
+        }
+    },
+    "result": {
+        "title": "ゲーム終了",
+        "score": "得点",
+        "buttons": {
+            "replay": "もう一度プレイする"
+        }
+    }
+}
