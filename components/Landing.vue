@@ -21,6 +21,9 @@ const navController = inject("navController");
           <template v-slot:practiceMode>
             <span class="font-bold">{{ $t("options.practiceMode") }}</span>
           </template>
+          <template v-slot:multipleChoiceMode>
+            <span class="font-bold">{{ $t("options.multipleChoiceMode") }}</span>
+          </template>
           <template v-slot:challengeMode>
             <span class="font-bold">{{ $t("options.challengeMode") }}</span>
           </template>

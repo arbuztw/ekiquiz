@@ -1,5 +1,5 @@
 <script setup>
-import { useConfigStores } from "@/stores/configStores";
+import { useConfigStores, GameMode } from "@/stores/configStores";
 import lines from "@/data/lines.json";
 import stations from "@/data/stations.json";
 import { shuffleArray } from "@/utils/shuffle";
@@ -12,20 +12,28 @@ const questions = createQuestions(
   config.numQuestions,
   config.selectedPrefectures,
   config.stationLineThreshold,
-  stations
+  stations,
+  config.gameMode
 );
 
 const qid = ref(0);
 const showAnswer = ref(false);
 const numCorrect = ref(0);
 const guessStation = ref("");
+const selectedChoice = ref("");
 const answered = ref(false);
 const answerCorrect = ref(false);
 
 const checkAnswer = () => {
-  answerCorrect.value = questions[qid.value].answer.includes(
-    guessStation.value
-  );
+  if (config.gameMode === GameMode.MultipleChoice) {
+    answerCorrect.value = questions[qid.value].answer.includes(
+      selectedChoice.value
+    );
+  } else {
+    answerCorrect.value = questions[qid.value].answer.includes(
+      guessStation.value
+    );
+  }
   answered.value = true;
 };
 
@@ -35,6 +43,7 @@ const nextQuestion = (correct) => {
   }
   showAnswer.value = false;
   guessStation.value = "";
+  selectedChoice.value = "";
   answered.value = false;
   answerCorrect.value = false;
   qid.value += 1;
@@ -44,7 +53,8 @@ function createQuestions(
   numQuestions,
   selectedPrefectures,
   stationLineThreshold,
-  stations
+  stations,
+  gameMode
 ) {
   const matched_stations = Object.entries(stations)
     .map(([_, station]) => station)
@@ -59,10 +69,22 @@ function createQuestions(
     .entries()
     .filter(([_, stations]) => stations.length == 1)
     .map(([line_str, stations]) => {
-      return {
+      const question = {
         question: line_str.split(",").map((line) => lines[line].name),
         answer: stations[0].names,
       };
+
+      if (gameMode === GameMode.MultipleChoice) {
+        const allStationNames = matched_stations.flatMap((s) => s.names);
+        const incorrectAnswers = shuffleArray(
+          allStationNames.filter((name) => !question.answer.includes(name))
+        ).slice(0, 3);
+        question.choices = shuffleArray([
+          question.answer[0],
+          ...incorrectAnswers,
+        ]);
+      }
+      return question;
     })
     .toArray();
   shuffleArray(questions);
@@ -83,7 +105,7 @@ function createQuestions(
         {{ line }}
       </div>
     </div>
-    <div v-if="config.isAnswerMode" class="my-4">
+    <div v-if="config.gameMode === GameMode.Challenge" class="my-4">
       <input
         v-if="!answered"
         type="text"
@@ -96,7 +118,7 @@ function createQuestions(
         class="py-1"
         :class="[answerCorrect ? 'text-green-500' : 'text-red-500']"
       >
-        <span>{{ answerCorrect ? "\u2713" : "\u2718" }}</span
+        <span>{{ answerCorrect ? "&#x2713;" : "&#x2718;" }}</span
         >&nbsp;{{ guessStation }}
       </div>
       <div class="my-4">
@@ -121,7 +143,41 @@ function createQuestions(
         }}
       </div>
     </div>
-    <div v-else class="my-4">
+    <div v-else-if="config.gameMode === GameMode.MultipleChoice" class="my-4">
+      <div class="w-max mx-auto">
+        <div class="flex flex-col gap-4">
+          <button
+            v-for="choice in questions[qid].choices"
+            :key="choice"
+            @click="selectedChoice = choice; checkAnswer()"
+            :disabled="answered"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-3 rounded-md w-full"
+            :class="{
+              'bg-green-500': answered && questions[qid].answer.includes(choice),
+              'bg-red-500': answered && !questions[qid].answer.includes(choice) && selectedChoice === choice,
+              'opacity-50 cursor-not-allowed': answered && !questions[qid].answer.includes(choice) && selectedChoice !== choice,
+            }"
+          >
+            {{ choice }}
+          </button>
+        </div>
+      </div>
+      <div class="my-4">
+        <button
+          v-if="answered"
+          @click="nextQuestion(answerCorrect)"
+          class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-md"
+        >
+          {{ $t("play.buttons.next") }}
+        </button>
+      </div>
+      <div v-if="answered && !answerCorrect && config.gameMode !== GameMode.MultipleChoice" class="text-lg font-bold py-2">
+        {{ $t("play.correctAnswer") }}：&nbsp;{{
+          questions[qid].answer.join(" / ")
+        }}
+      </div>
+    </div>
+    <div v-else-if="config.gameMode === GameMode.Practice" class="my-4">
       <button
         v-if="!showAnswer"
         @click="showAnswer = true"
@@ -144,7 +200,7 @@ function createQuestions(
         </button>
       </div>
     </div>
-    <div class="text-lg font-bold py-2" v-show="showAnswer">
+    <div class="text-lg font-bold py-2" v-show="showAnswer && config.gameMode !== GameMode.MultipleChoice">
       {{ questions[qid].answer.join(" / ") }}
     </div>
   </div>

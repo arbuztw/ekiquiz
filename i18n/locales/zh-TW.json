@@ -11,7 +11,7 @@
             "selectRegions": "選擇一或多個地區（都道府縣）",
             "minLines": "設定車站需至少幾條路線經過",
             "selectQuestions": "選擇題數",
-            "chooseMode": "選擇{practiceMode}或{challengeMode}",
+            "chooseMode": "選擇{practiceMode}、{multipleChoiceMode}或{challengeMode}",
         },
         "gameFlow": {
             "title": "開始遊戲",
@@ -45,6 +45,7 @@
         },
         "mode": "模式",
         "practiceMode": "練習模式",
+        "multipleChoiceMode": "選擇題模式",
         "challengeMode": "挑戰模式",
         "buttons": {
             "start": "開始"

@@ -11,7 +11,7 @@
             "selectRegions": "地域（都道府県）を選ぶ",
             "minLines": "駅の乗り入れ路線数を設定",
             "selectQuestions": "出題数を選ぶ",
-            "chooseMode": "{practiceMode}か{challengeMode}を選ぶ"
+            "chooseMode": "{practiceMode}か{multipleChoiceMode}か{challengeMode}を選ぶ"
         },
         "gameFlow": {
             "title": "ゲーム開始",
@@ -45,6 +45,7 @@
         },
         "mode": "モード",
         "practiceMode": "練習モード",
+        "multipleChoiceMode": "選択モード",
         "challengeMode": "挑戦モード",
         "buttons": {
             "start": "開始"

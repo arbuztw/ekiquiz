@@ -1,5 +1,5 @@
 <script setup>
-import { useConfigStores } from "@/stores/configStores";
+import { useConfigStores, GameMode } from "@/stores/configStores";
 import stations from "@/data/stations.json";
 
 const navController = inject("navController");
@@ -46,17 +46,26 @@ config.stationLineThreshold = Math.min(
       <label class="pe-2">
         <input
           type="radio"
-          :value="false"
-          v-model="config.isAnswerMode"
+          :value="GameMode.Practice"
+          v-model="config.gameMode"
           class="accent-emerald-500"
         />
         {{ $t("options.practiceMode") }}
       </label>
+      <label class="pe-2">
+        <input
+          type="radio"
+          :value="GameMode.MultipleChoice"
+          v-model="config.gameMode"
+          class="accent-emerald-500"
+        />
+        {{ $t("options.multipleChoiceMode") }}
+      </label>
       <label>
         <input
           type="radio"
-          :value="true"
-          v-model="config.isAnswerMode"
+          :value="GameMode.Challenge"
+          v-model="config.gameMode"
           class="accent-emerald-500"
         />
         {{ $t("options.challengeMode") }}
