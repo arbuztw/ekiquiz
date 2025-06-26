@@ -43,33 +43,17 @@ config.stationLineThreshold = Math.min(
     </div>
     <label class="option-name">{{ $t("options.mode") }}：</label>
     <div>
-      <label class="pe-2">
-        <input
-          type="radio"
-          :value="GameMode.Practice"
-          v-model="config.gameMode"
-          class="accent-emerald-500"
-        />
-        {{ $t("options.practiceMode") }}
-      </label>
-      <label class="pe-2">
-        <input
-          type="radio"
-          :value="GameMode.MultipleChoice"
-          v-model="config.gameMode"
-          class="accent-emerald-500"
-        />
-        {{ $t("options.multipleChoiceMode") }}
-      </label>
-      <label>
-        <input
-          type="radio"
-          :value="GameMode.Challenge"
-          v-model="config.gameMode"
-          class="accent-emerald-500"
-        />
-        {{ $t("options.challengeMode") }}
-      </label>
+      <select v-model="config.gameMode" class="p-1">
+        <option :value="GameMode.Practice">
+          {{ $t("options.practiceMode") }}
+        </option>
+        <option :value="GameMode.MultipleChoice">
+          {{ $t("options.multipleChoiceMode") }}
+        </option>
+        <option :value="GameMode.Challenge">
+          {{ $t("options.challengeMode") }}
+        </option>
+      </select>
     </div>
   </div>
   <div class="text-center p-2">
