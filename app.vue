@@ -3,6 +3,7 @@ import SelectPrefectures from "@/components/SelectPrefectures";
 import Play from "@/components/Play";
 import Options from "@/components/Options";
 import Landing from "@/components/Landing";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const { t } = useI18n();
 
@@ -67,6 +68,7 @@ provide("navController", navController);
       <h1 class="text-xl font-bold">
         <a href="./">{{ $t("title") }}</a>
       </h1>
+      <LanguageSwitcher />
     </div>
     <div class="flex flex-col px-6 pb-14 items-center flex-1">
       <component :is="navController.currentPage.value" />
