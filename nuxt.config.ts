@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
-    defaultLocale: "zh-TW",
+    defaultLocale: "ja",
     locales: [
       { code: "zh-TW", name: "繁體中文", file: "zh-TW.json" },
       { code: "ja", name: "日本語", file: "ja.json" },
