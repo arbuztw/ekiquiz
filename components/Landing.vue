@@ -57,6 +57,12 @@ const navController = inject("navController");
           </ul>
         </li>
         <li>
+          {{ $t("options.multipleChoiceMode") }}
+          <ul class="list-disc ps-6">
+            <li>{{ $t("flow.gameFlow.multipleChoice.select") }}</li>
+          </ul>
+        </li>
+        <li>
           {{ $t("options.challengeMode") }}
           <ul class="list-disc ps-6">
             <li>{{ $t("flow.gameFlow.challenge.inputExact") }}</li>

@@ -20,6 +20,9 @@
                 "showAnswer": "「{showAnswer}」で答えを表示",
                 "markAnswer": "「{correctAnswer}」か「{wrongAnswer}」を選ぶ"
             },
+            "multipleChoice": {
+                "select": "4つの選択肢から駅名を選ぶ"
+            },
             "challenge": {
                 "inputExact": "駅名を入力（完全一致）"
             }
