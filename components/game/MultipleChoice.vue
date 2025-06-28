@@ -11,7 +11,7 @@ const { userAnswer, answered, answerCorrect, checkAnswer, nextQuestion } =
 <template>
   <div class="my-4">
     <div class="w-max mx-auto">
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-3">
         <button
           v-for="choice in question.choices"
           :key="choice"

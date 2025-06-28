@@ -31,7 +31,7 @@ export function createQuestions(
         const allStationNames = matched_stations.flatMap((s) => s.names);
         const incorrectAnswers = shuffleArray(
           allStationNames.filter((name) => !question.answer.includes(name))
-        ).slice(0, 3);
+        ).slice(0, 2);
         question.choices = shuffleArray([
           question.answer[0],
           ...incorrectAnswers,
