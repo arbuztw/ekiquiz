@@ -21,7 +21,7 @@
                 "markAnswer": "自行選擇「{correctAnswer}」或「{wrongAnswer}」"
             },
             "multipleChoice": {
-                "select": "從四個選項中選出正確的車站名稱"
+                "select": "從三個選項中選出正確的車站名稱"
             },
             "challenge": {
                 "inputExact": "輸入車站名稱（需完全一致）"

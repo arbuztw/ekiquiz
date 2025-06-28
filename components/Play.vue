@@ -32,7 +32,7 @@ const nextQuestion = (correct) => {
 </script>
 
 <template>
-  <div v-if="qid < questions.length" class="flex-col text-center pt-6">
+  <div v-if="qid < questions.length" class="flex-col text-center pt-4">
     <div
       class="min-h-[22rem] min-w-[22rem] flex flex-col justify-center items-center mb-6 p-4 bg-white rounded-lg shadow-sm"
     >
