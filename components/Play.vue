@@ -1,6 +1,5 @@
 <script setup>
 import { useConfigStores, GameMode } from "@/stores/configStores";
-import stations from "@/data/stations.json";
 import Challenge from "@/components/game/Challenge.vue";
 import MultipleChoice from "@/components/game/MultipleChoice.vue";
 import Practice from "@/components/game/Practice.vue";
@@ -14,7 +13,6 @@ const questions = createQuestions(
   config.numQuestions,
   config.selectedPrefectures,
   config.stationLineThreshold,
-  stations,
   config.gameMode
 );
 
